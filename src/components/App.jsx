@@ -21,8 +21,8 @@ function App () {
 useEffect(() => {
 if(!input){
   return
-}
-load(input, page)},[input, page]);
+// eslint-disable-next-line react-hooks/exhaustive-deps
+} load(input, page)},[input, page]);
 
 
 function load(){
