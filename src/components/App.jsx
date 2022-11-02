@@ -17,12 +17,12 @@ function App () {
  const [ tag, setTag] = useState('')        
  const [ showModal, setShowModal] = useState(false) 
  
-// eslint-disable-next-line react-hooks/exhaustive-deps
+
 useEffect(() => {
 if(!input){
   return
 // eslint-disable-next-line react-hooks/exhaustive-deps
-} load(input, page)},[input, page]);
+} load()},[input, page]);
 
 
 function load(){
