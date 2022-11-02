@@ -4,11 +4,11 @@ import ImageGalleryItem from "components/ImageGalleryItem/ImageGalleryItem";
 const ImageGallery = ({gallery, openModal}) => {
 
 return (  
-   <ImagesGallery>
+<ImagesGallery>
 {gallery.map(({id, largeImageURL, tags, webformatURL }) =>
- (<ImageGalleryItem key={id} openModal={openModal} webformatURL={webformatURL} tags={tags} largeImageURL={largeImageURL} >
-</ImageGalleryItem>))}
-    </ImagesGallery>
+ (<ImageGalleryItem key={id} openModal={openModal} webformatURL={webformatURL} tags={tags} largeImageURL={largeImageURL} />
+))}
+</ImagesGallery>
  
 )
 }

@@ -20,28 +20,22 @@ function App () {
 
 useEffect(() => {
 if(!input){
-  return
-// eslint-disable-next-line react-hooks/exhaustive-deps
-} load()},[input, page]);
-
-
-function load(){
+return} 
+  
+const load = () => {
     setLoading(true)
       fetchApi(input, page)
       .then(({data}) => {
-        setGallery(() => 
-          {if(page === 1){
-              return [ ...data.hits]
-          }
-          else {
-              return [ ...gallery, ...data.hits]
-          }
-           })})
+        if(page === 1){setGallery([...data.hits])}
+        else{setGallery(prevGall => 
+        [...prevGall, ...data.hits]
+        )}})
       .catch(error => {setError(error)})
       .finally(() => setLoading(false));
   }
-  
-  const loadMore = () => {
+  load();},[input, page])
+
+const loadMore = () => {
       setPage(prevState => prevState + 1)
   }    
 const handleFormSubmit = (input) => {
