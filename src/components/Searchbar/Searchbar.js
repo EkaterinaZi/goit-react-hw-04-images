@@ -5,7 +5,6 @@ import {SearchbarTitle, SearchForm, SearchFormButton, SearchInput} from "compone
 const Searchbar = ({onSubmit}) => {
   const [input, setInput] = useState('')
       
-
 const handleNameChange = e => {
     setInput(e.currentTarget.value.toLowerCase())
 }
