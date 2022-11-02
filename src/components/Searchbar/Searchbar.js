@@ -34,8 +34,7 @@ name="input"
     />
 </SearchForm>
 </SearchbarTitle>   
-
-    );
+);
 }
 
 
