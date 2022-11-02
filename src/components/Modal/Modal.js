@@ -1,33 +1,29 @@
-import React from "react";
+import {useEffect} from "react";
 import { createPortal } from "react-dom";
 import { Overlay, ModalBlock } from './Modal.styled'
-
+import { ImageLarge } from "components/ImageGallery/ImageGallery.styled";
 const modalRoot = document.querySelector('#modal-root')
 
-class Modal extends React.Component {
+function Modal ({onClose, urlLarge, tag}){
 
-componentDidMount(){
-  window.addEventListener('keydown', this.closeModal)
-}
+useEffect(() => {
+    window.addEventListener('keydown', closeModal)
+    return () => window.removeEventListener('keydown', closeModal)
+  })
 
-componentWillUnmount(){
-  window.removeEventListener('keydown', this.closeModal)
-}
-
-closeModal = e => {
+const closeModal = e => {
   if(e.currentTarget === e.target || e.code === 'Escape'){
-    this.props.onClose();
+    onClose();
   }
 }
-render(){
+
   return(
     createPortal(
-<Overlay onClick={this.closeModal}>
-  <ModalBlock>
-    {this.props.children}
+<Overlay onClick={closeModal}>
+  <ModalBlock onClick={onClose}>
+  <ImageLarge src={urlLarge} alt={tag}/>
   </ModalBlock>
 </Overlay>, modalRoot))}
 
-}
 
 export default Modal;

@@ -1,32 +1,32 @@
-import React from "react";
+import {useState} from "react";
 import {IoSearch} from 'react-icons/io5'
 import {SearchbarTitle, SearchForm, SearchFormButton, SearchInput} from "components/Searchbar/Searchbar.styled"
 
-class Searchbar extends React.Component{
-    state = {
-        input: ''}
+const Searchbar = ({onSubmit}) => {
+  const [input, setInput] = useState('')
+      
 
-handleNameChange = e => {
-    this.setState({input: e.currentTarget.value.toLowerCase()})
+const handleNameChange = e => {
+    setInput(e.currentTarget.value.toLowerCase())
 }
-handleNameSubmit = e => {
+const handleNameSubmit = e => {
     e.preventDefault();
-    if(this.state.input.trim() === ''){
+    if(input.trim() === ''){
         alert('Enter data')
         return
     }
-    this.props.input(this.state.input);
-    this.setState({input: ''})
+    onSubmit(input);
+    setInput('')
 }
-render() {
+
     return ( 
 <SearchbarTitle>
-<SearchForm onSubmit={this.handleNameSubmit}>
+<SearchForm onSubmit={handleNameSubmit}>
 <SearchFormButton>
 <IoSearch />Find
 </SearchFormButton>
-<SearchInput onChange={this.handleNameChange}
-value={this.state.input}
+<SearchInput onChange={handleNameChange}
+value={input}
 name="input"
       type="text"
       autoComplete="off"
@@ -38,7 +38,7 @@ name="input"
 
     );
 }
-}
+
 
 
 
